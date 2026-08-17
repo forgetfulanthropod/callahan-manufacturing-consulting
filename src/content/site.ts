@@ -8,7 +8,7 @@ export const site = {
   legalName: "Callahan Manufacturing Consulting LLC",
   tagline: "The plant-floor practice for electric vehicle programs.",
   lede:
-    "We sit with OEM and Tier-1 launch teams from cell to curb. Battery, e-drive, body, paint, and final assembly — the problems that actually stop a program.",
+    "We sit with OEM and Tier-1 launch teams from cell to curb. Battery, e-drive, castings and structure, materials science, and final assembly — the problems that actually stop a program.",
   founded: "2014",
   hq: "Detroit, Michigan",
   offices: [
@@ -29,7 +29,7 @@ export const site = {
     { name: "German premium OEM", role: "E-axle and NVH" },
     { name: "Korean cell maker", role: "US module localization" },
     { name: "California EV OEM", role: "First-time yield" },
-    { name: "Japanese transplant", role: "HV electrical quality" },
+    { name: "Japanese transplant", role: "Structural castings" },
     { name: "Tier-1 inverter house", role: "End-of-line test" },
   ],
   stats: [
