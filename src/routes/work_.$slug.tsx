@@ -3,7 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import { caseStudies, getCaseStudy } from "@/content/caseStudies";
 import { problems } from "@/content/problems";
 
-export const Route = createFileRoute("/work/$slug")({
+export const Route = createFileRoute("/work_/$slug")({
   loader: ({ params }) => {
     const study = getCaseStudy(params.slug);
     if (!study) throw notFound();

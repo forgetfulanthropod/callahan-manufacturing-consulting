@@ -16,7 +16,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as ProblemsRouteImport } from './routes/problems'
 import { Route as WorkRouteImport } from './routes/work'
-import { Route as WorkSlugRouteImport } from './routes/work.$slug'
+import { Route as WorkSlugRouteImport } from './routes/work_.$slug'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 
 const IndexRoute = IndexRouteImport.update({
@@ -55,9 +55,9 @@ const WorkRoute = WorkRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const WorkSlugRoute = WorkSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => WorkRoute,
+  id: '/work_/$slug',
+  path: '/work/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
   id: '/api/auth/$',
@@ -72,7 +72,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/login': typeof LoginRoute
   '/problems': typeof ProblemsRoute
-  '/work': typeof WorkRouteWithChildren
+  '/work': typeof WorkRoute
   '/work/$slug': typeof WorkSlugRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
@@ -83,7 +83,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/login': typeof LoginRoute
   '/problems': typeof ProblemsRoute
-  '/work': typeof WorkRouteWithChildren
+  '/work': typeof WorkRoute
   '/work/$slug': typeof WorkSlugRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
@@ -95,8 +95,8 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/login': typeof LoginRoute
   '/problems': typeof ProblemsRoute
-  '/work': typeof WorkRouteWithChildren
-  '/work/$slug': typeof WorkSlugRoute
+  '/work': typeof WorkRoute
+  '/work_/$slug': typeof WorkSlugRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRouteTypes {
@@ -131,7 +131,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/problems'
     | '/work'
-    | '/work/$slug'
+    | '/work_/$slug'
     | '/api/auth/$'
   fileRoutesById: FileRoutesById
 }
@@ -142,7 +142,8 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   LoginRoute: typeof LoginRoute
   ProblemsRoute: typeof ProblemsRoute
-  WorkRoute: typeof WorkRouteWithChildren
+  WorkRoute: typeof WorkRoute
+  WorkSlugRoute: typeof WorkSlugRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
 
@@ -197,12 +198,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/work/$slug': {
-      id: '/work/$slug'
-      path: '/$slug'
+    '/work_/$slug': {
+      id: '/work_/$slug'
+      path: '/work/$slug'
       fullPath: '/work/$slug'
       preLoaderRoute: typeof WorkSlugRouteImport
-      parentRoute: typeof WorkRoute
+      parentRoute: typeof rootRouteImport
     }
     '/api/auth/$': {
       id: '/api/auth/$'
@@ -214,16 +215,6 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface WorkRouteChildren {
-  WorkSlugRoute: typeof WorkSlugRoute
-}
-
-const WorkRouteChildren: WorkRouteChildren = {
-  WorkSlugRoute: WorkSlugRoute,
-}
-
-const WorkRouteWithChildren = WorkRoute._addFileChildren(WorkRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
@@ -231,7 +222,8 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   LoginRoute: LoginRoute,
   ProblemsRoute: ProblemsRoute,
-  WorkRoute: WorkRouteWithChildren,
+  WorkRoute: WorkRoute,
+  WorkSlugRoute: WorkSlugRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
 }
 export const routeTree = rootRouteImport
