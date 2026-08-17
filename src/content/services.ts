@@ -49,17 +49,17 @@ export const services: Service[] = [
     ],
   },
   {
-    slug: "body-paint",
-    title: "Body, closures, and paint",
+    slug: "castings-structure",
+    title: "Castings, structure, and materials science",
     summary:
-      "Skateboard architectures change the body shop. We recover takt, seal, and first-run capability without adding bodies-in-white inventory.",
+      "Mega- and giga-castings, structural battery trays, and the alloys that have to survive crash, leak, and rate. We close porosity, heat treat, and joint integrity before the structure becomes the floor.",
     image: "/images/body-shop.jpg",
     icon: Factory,
     work: [
-      "Mix-model takt and robot density",
-      "Closure fit, gap, and flush on aluminum/steel mixes",
-      "E-coat, sealer, and first-run capability",
-      "Paint energy and booth balance",
+      "High-pressure die cast porosity, fill, and dimensional capability",
+      "Heat-treat, quench distortion, and residual stress windows",
+      "Structural tray / skateboard stiffness vs. leak and service access",
+      "Alloy selection, joining metallurgy, and NDE that plant can run",
     ],
   },
   {
