@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #efebe3;
+  --color-bg-deep: #171614;
+  --color-surface: #f7f4ee;
+  --color-surface-ink: #22211e;
+  --color-fg: #171614;
+  --color-fg-on-ink: #f3efe6;
+  --color-muted: #6d675e;
+  --color-muted-on-ink: #b7b1a6;
+  --color-steel: #3e474e;
+  --color-steel-soft: #5b666e;
+  --color-border: #d8d1c4;
+  --color-border-ink: #2c2a26;
+  --color-accent: #3e474e;
+  --color-accent-fg: #f7f4ee;
+  --color-danger: #8a3a2a;
+
+  --font-display: "Newsreader", "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.1875rem;
+  --text-xl: clamp(1.35rem, 1.1rem + 0.8vw, 1.65rem);
+  --text-2xl: clamp(1.85rem, 1.3rem + 1.8vw, 2.6rem);
+  --text-3xl: clamp(2.4rem, 1.5rem + 3.4vw, 4.4rem);
+  --text-4xl: clamp(3rem, 1.6rem + 5vw, 6rem);
+
+  --leading-tight: 1.08;
+  --leading-snug: 1.22;
+  --leading-normal: 1.55;
+
+  --tracking-display: -0.028em;
+  --tracking-wide: 0.14em;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-quick: 150ms;
+  --motion-fast: 250ms;
+}
+
+@layer base {
+  html {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    min-height: 100dvh;
+    background: var(--color-bg);
+    color: var(--color-fg);
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-steel) 28%, transparent);
+    color: var(--color-fg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
